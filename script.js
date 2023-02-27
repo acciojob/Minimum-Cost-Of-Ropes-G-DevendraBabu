@@ -1,20 +1,43 @@
 function calculateMinCost() {
-  //your code here
-  // console.log("hello im working");
-  let inp_elements=document.getElementById("rope-lengths").value;
-  
-  let fil=inp_elements.split(",");
-  console.log(fil[2]);
-  var num_array=[];
-  for(let i=0;i<fil.length;i++)
-  {
-    let a=parseInt(fil[i]);
-    num_array.push(a);
-  }
+  var inp=document.getElementById("rope-lengths");
 
-  // var sum=0;
-//  num_array.sort();
-  console.log(typeof num_array[1]);
-  console.log(num_array.sort());
-  // console.log(fil);
+      let inp_val=inp.value;
+      let a=inp_val.split(",");
+      // console.log(a);
+  
+      let numeric_array=[];
+      for(let i=0;i<a.length;i++)
+      {
+          numeric_array.push(parseInt(a[i]));
+          
+      }
+  
+  
+      function compareNumbers(a,b)
+      {
+          return a - b;
+      }
+  
+      numeric_array.sort(compareNumbers); 
+      // console.log(numeric_array);
+      
+      var len=numeric_array.length;
+      var sum=0;
+      while(numeric_array.length>1)
+      {
+          const first_el=numeric_array.shift();
+          const second_el=numeric_array.shift();
+          sum=sum+first_el+second_el;
+          numeric_array.push(first_el +second_el);
+          numeric_array.sort(compareNumbers);
+      }
+      // console.log(sum);
+  
+  
+      let res_div=document.getElementById("result");
+      res_div.innerHTML=sum;
+      
+
+  
+
 }  
